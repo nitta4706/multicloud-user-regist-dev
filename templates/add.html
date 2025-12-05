@@ -1,0 +1,116 @@
+<!-- 利用者側の登録時に使用するフォーム(No.1)
+(使用用途)
+    以下のようなデータを入力する
+すべて必須
+①引き渡し希望日(空欄不可)⇛カレンダーで選択(入力日以前の日付は入力不可)
+②氏名(空欄不可)
+③TEL(空欄不可)
+④email(空欄不可)
+⑤会社名(空欄不可)⇛selectタグで選択
+⑥所属部署(空欄不可)
+ -->
+
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請の{{ kind }}</title>
+{% endblock %}
+{% block content %}
+
+<form action="/user_req" method="POST">
+    {% if registId %}
+        <input type="hidden" value="{{ registId }}" name="id"/>
+    {% endif %}
+    <div class="container">
+        <h2>マルチクラウド利用者申請書(No.1)</h2>
+        {% if error %}
+            {% for e in error %}
+            <strong><p class="error_message" style="color:#ff0000;">{{e}}</p></strong>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            <p>申請情報を登録します。</p><p style="color:#ff0000;">赤字</p><p>の項目は必須になります。</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="row">
+                        <strong>環境引き渡し希望日</strong>
+                        <p style="margin-left:15px;color:#ff0000;">(必須)</p>
+                    </div>
+                    <input class="form-control" id="regist_date_input" type="date" placeholder="例：2023/05/14" name="regist_date" style="background-color: #ffffcc;" value="{% if form['regist_date'] %}{{form['regist_date']}}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>氏名</strong>
+                        <span style="margin-left:15px;color:#ff0000;">(必須:全角半角日本語入力可)</span>
+                    </div>
+                    <input class="form-control" type="text" placeholder="例：鈴木一郎" name="username" autocomplete="username" style="background-color: #ffffcc;" value="{% if form['username'] %}{{form['username']}}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>電話番号</strong>
+                        <p style="margin-left:15px;color:#ff0000;">(必須:半角数字及び-(ハイフン)のみ)</p>
+                    </div>
+                    <input class="form-control" type="text" placeholder="例：090-1111-0333" name="tel_number" style="background-color: #ffffcc;" value="{% if form['tel_number'] %}{{form['tel_number']}}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>メールアドレス</strong>
+                        <p style="margin-left:15px;color:#ff0000;">(必須)</p>
+                    </div>
+                    <input class="form-control" type="text" placeholder="例：saaaa@g-gen.co.jp" name="email" autocomplete="email" style="background-color: #ffffcc;" value="{% if form['email'] %}{{form['email']}}{% else %}{{ usermail }}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>会社名</strong>
+                        <p style="margin-left:15px;color:#ff0000;">(必須)</p>
+                    </div>
+                    <select name="company_id" style="background-color: #ffffcc;height: 35px;">
+                         <option value=""></option>
+                         {% for item in company_data %}
+                            <option value="{{ item.company_id }}:{{ item.company_name }}">{{ item.company_name }}</option>
+                         {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>所属部署</strong>
+                        <p style="margin-left:15px;color:#ff0000;">(必須:全角半角日本語入力可)</p>
+                    </div>
+                    <input class="form-control" type="text" placeholder="例：デジタル革新部" name="belonging_department" style="background-color: #ffffcc;" value="{% if form['belonging_department'] %}{{form['belonging_department']}}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <input id="regist_id" type="submit" class="btn btn-primary" value="次へ"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+// ページが読み込まれたときに処理を実行
+window.addEventListener('load', function() {
+    // 日付入力フィールドの要素を取得
+    let registDateInput = document.getElementById('regist_date_input');
+
+    // 現在の日付を取得
+    let currentDate = new Date();
+    let currentDateString = currentDate.toISOString().split('T')[0];
+
+    // 日付入力フィールドの最小値を設定（現在の日付以上になるように）
+    registDateInput.setAttribute('min', currentDateString);
+
+    // 入力が変更されたときに処理を実行
+    registDateInput.addEventListener('input', function() {
+        // 入力値を取得
+        let inputValue = registDateInput.value;
+
+        // 入力値が現在の日付よりも小さい場合、エラーメッセージを表示
+        if (inputValue < currentDateString) {
+            alert('現在の日付よりも過去の日付は選択できません!');
+            registDateInput.value = currentDateString;
+        }
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!-- 利用者側の登録時に使用するフォーム(No.2)
+(使用用途)
+以下のようなデータを入力する
+その他情報以外すべて必須
+①プロジェクト名(空欄不可)
+②システム名(空欄不可)
+③利用用途(空欄不可)⇛ラジオボタンにて選択
+④その他情報(空欄可)
+ -->
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請の{{ kind }}</title>
+{% endblock %}
+{% block content %}
+
+<form action="/add" method="POST">
+    <input type="hidden" value="{{form['username']}}" name="username" />
+    <input type="hidden" value="{{form['regist_date']}}" name="regist_date" />
+    <input type="hidden" value="{{form['tel_number']}}" name="tel_number" />
+    <input type="hidden" value="{{form['email']}}" name="email" />
+    <input type="hidden" value="{{form['belonging_department']}}" name="belonging_department" />
+    <input type="hidden" value="{{form['company_id']}}" name="company_id" />
+    {% if registId %}
+        <input type="hidden" value="{{ registId }}" name="id"/>
+    {% endif %}
+
+    <div class="container">
+
+        <h2>マルチクラウド利用者申請書(No.2)</h2>
+        {% if error %}
+            {% for e in error %}
+                <strong><p class="error_message" style="color:#ff0000;">{{e}}</p></strong>
+            {% endfor %}
+        {% endif %}
+        <div class="row">
+            <p style="color:#ff0000;">赤字(必須)</p>
+            <p>の項目は必須項目になります。</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="row">
+                        <strong>プロジェクト名</strong>
+                        <span style="margin-left:15px;color:#ff0000;">(必須:全角半角日本語入力可)</span>
+                    </div>
+                    <input class="form-control" type="text" placeholder="(例)社内プロジェクト" name="project_name" style="background-color: #ffffcc;" value="{% if form['project_name'] %}{{form['project_name']}}{% endif %}"/>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>システム名</strong>
+                        <span style="margin-left:15px;color:#ff0000;">(必須:全角半角日本語入力可)</span>
+                    </div>
+                    <input class="form-control" type="text" placeholder="(例)社内システム" name="system_name" style="background-color: #ffffcc;" value="{% if form['system_name'] %}{{form['system_name']}}{% endif %}"/>
+                </div>
+                 <div class="form-group">
+                    <div class="row">
+                        <strong>利用用途</strong>
+                        <span style="margin-left:15px;color:#ff0000;">(必須)</span>
+                    </div>
+                    <input type="radio" id="checkbox1" name="type" value="1:通常" style="margin-left: 10px;"><label for="checkbox1">通常</label>
+                    <input type="radio" id="checkbox2" name="type" value="2:API" style="margin-left: 10px;"><label for="checkbox2">API</label>
+                    <input type="radio" id="checkbox3" name="type" value="3:セキュア" style="margin-left: 10px;"><label for="checkbox3">セキュア</label>
+                     <input type="radio" id="checkbox4" name="type" value="4:wp" style="margin-left: 10px;"><label for="checkbox4">WordPress</label>
+                     <input type="radio" id="checkbox5" name="type" value="5:static" style="margin-left: 10px;"><label for="checkbox5">静的サイト</label>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <strong>その他情報</strong>
+                        <p>案件概要やその他付加情報がある場合に、下記の欄に内容をご記載下さい。</p>
+                    </div>
+                    <textarea cols="5" class="form-control" placeholder="(例)
+案件概要
+社内システム基盤として利用
+
+申請に関して不明点がある場合こちらに内容をご記載下さい。
+
+" style="height: 200px;background-color: #ffffcc;" name="memo">{{form['memo']}}</textarea>
+                </div>
+                <div class="form-group">
+                    <a href="/user_req"><input id="submit" type="button" class="btn btn-dark" value="戻る"/></a>
+                    <input id="add" type="submit" class="btn btn-primary" value="確認"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}

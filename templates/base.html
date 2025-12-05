@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<HEAD>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        label.emphasize {
+            font-weight: bold;
+        }
+    </style>
+
+    <title>申請フォーム</title>
+    {% block title %}
+    {% endblock %}
+</HEAD>
+<BODY>
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="/" style="margin-left:8%;"><span class="navbar-brand">マルチクラウド(利用者申請)</span></a>
+    </nav>
+
+    <main class="bd-content py-5 pl-3" role="main" style="background-color: #e0ffff; min-height: calc(100vh - 150px);">
+        {% block content %}
+        {% endblock %}
+
+    </main>
+    <footer class="footer navbar-dark bg-dark">
+        <div class="container" style="margin-left:7%;">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="navbar-brand">&copy; 三菱地所株式会社(マルチクラウド)</p>
+                    <a href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=mec_cloud@mjit.co.jp" target="_blank"><p class="navbar-brand">お問い合わせ: mec_cloud@mjit.co.jp</p></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</BODY>

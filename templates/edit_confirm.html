@@ -1,0 +1,58 @@
+<!--
+(使用用途)
+編集画面の登録内容を一覧で確認する画面
+ -->
+
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請</title>
+{% endblock %}
+{% block content %}
+<script type="text/javascript">
+    function buttonClick(){
+        alert('この内容で生成しますか？');
+    }
+</script>
+<div class="container">
+
+    <form action="/userlist_update/{{ item.id }}" method="post">
+        <div class="row"><h2>利用申請者(編集)</h2><a href="/userlist_edit/{{ item.id }}"><input type="button" style="margin-left: 50px;" class="btn btn-success" value="戻る"/></a></div>
+        {% for key,val in data.items() %}
+            <input type="hidden" value="{{ val }}" name="{{ key }}" />
+        {% endfor %}
+        <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr><td style="background-color: #FFFFE0;">ID</td><td style="background-color: white;">{{ item.id }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">会社名</td><td style="background-color: white;">{{ item.manage_company_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">組織名</td><td style="background-color: white;">{{ item.organization_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">GCPで使用するプロジェクト名</td><td style="background-color: white;">{{ item.project_name_gcp }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">Googleグループ名(管理者用)</td><td style="background-color: white;">{{ item.group_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">Googleグループ e-mail(管理者用)</td><td style="background-color: white;">{{ item.group_email }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">Googleグループ名(利用者用)</td><td style="background-color: white;">{{ item.user_group_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">Googleグループ e-mail(利用者用)</td><td style="background-color: white;">{{ item.user_group_email }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">環境</td><td style="background-color: white;">{{ item.env }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">利用用途</td><td style="background-color: white;">{{ item.use_purpose }}</td></tr>
+                {% if item.use_purpose != 'wp' and item.use_purpose != 'static' %}
+                    <tr><td style="background-color: #FFFFE0;">利用IP範囲</td><td style="background-color: white;">{{ item.subnet_info }}</td></tr>
+                {% endif %}
+                {% if item.use_purpose != 'standard' and item.use_purpose != 'wp' and item.use_purpose != 'static' %}
+                    <tr><td style="background-color: #FFFFE0;">アクセス元IP制限</td><td style="background-color: white;">{{ item.client_cidr }}</td></tr>
+                {% endif %}
+                {% if item.use_purpose == 'secure' %}
+                    <tr><td style="background-color: #FFFFE0;">VPC-ACCESS-CONNECTOR</td><td style="background-color: white;">{{ item.vpc_access_conn }}</td></tr>
+                    <tr><td style="background-color: #FFFFE0;">CONNECTOR-CIDR</td><td style="background-color: white;">{{ item.connector_cidr }}</td></tr>
+                {% endif %}
+                {% if item.use_purpose == 'static' %}
+                    <tr><td style="background-color: #FFFFE0;">ドメイン</td><td style="background-color: white;">{{ item.domain_name }}</td></tr>
+                {% endif %}
+                {% if item.use_purpose == 'wp' %}
+                    <tr><td style="background-color: #FFFFE0;">ドメイン</td><td style="background-color: white;">{{ item.domain_name }}</td></tr>
+                {% endif %}
+            </table>
+        </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="登録" onclick="buttonClick()"/>
+    </form>
+</div>
+{% endblock %}

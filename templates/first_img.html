@@ -1,0 +1,35 @@
+<!--
+(使用用途)
+利用者申請のTOP画面で使用
+ -->
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請の{{ kind }}</title>
+{% endblock %}
+{% block content %}
+
+<style>
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<div class="container text-center">
+    <div class="row">
+        <h1 style="margin-left: 200px;margin-top: 200px;">マルチクラウド基盤(三菱地所)</h1>
+    </div>
+    <div class="box">
+        <div class="row" style="margin-left: -200px;margin-top: 50px;">
+            <div class="col-md-6">
+                <a href="/user_req"><input type="button" class="btn btn-warning btn-lg" value="一般利用者"/></a>
+            </div>
+            <!--<div class="col-md-6">
+                <a href="/userlist"><input type="button" style="margin-left: 20px;" class="btn btn-primary btn-lg" value="管理者専用"/></a>
+            </div>
+	    -->
+        </div>
+    </div>
+</div>
+{% endblock %}

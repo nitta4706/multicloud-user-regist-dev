@@ -1,0 +1,18 @@
+<!--
+(使用用途)
+利用者申請の利用者側から入力した際に。
+エラーが発生した時に表示される画面
+ -->
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請の{{kind}}</title>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>登録が失敗しました。以下のエラーを確認してください。</h2>
+    <p>{{ error_mess }}</p>
+    <a href="/"><input id="submit" type="button" class="btn btn-dark" value="戻る"/></a>
+</div>
+
+{% endblock %}

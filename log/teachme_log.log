@@ -1,0 +1,894 @@
+2023-06-13 08:10:15.098 | ERROR    | utils.util:insert_data:88 - exceptions : module 'datetime' has no attribute 'now' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 79, in insert_data
+    now = datetime.now()
+AttributeError: module 'datetime' has no attribute 'now'
+
+2023-06-13 08:10:15.098 | ERROR    | utils.util:insert_data:88 - exceptions : module 'datetime' has no attribute 'now' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 79, in insert_data
+    now = datetime.now()
+AttributeError: module 'datetime' has no attribute 'now'
+
+2023-06-27 21:10:11.017 | INFO     | __main__:regist_func:236 - exceptions : 'QueryJob' object has no attribute 'reault' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 224, in regist_func
+    rows = bigquery_client.query(query).reault()
+AttributeError: 'QueryJob' object has no attribute 'reault'
+
+2023-06-27 21:10:11.017 | INFO     | __main__:regist_func:236 - exceptions : 'QueryJob' object has no attribute 'reault' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 224, in regist_func
+    rows = bigquery_client.query(query).reault()
+AttributeError: 'QueryJob' object has no attribute 'reault'
+
+2023-06-27 21:13:44.060 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6f2128ab-f66e-4dff-a159-390ea7d112a2
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6f2128ab-f66e-4dff-a159-390ea7d112a2
+
+
+2023-06-27 21:13:44.060 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6f2128ab-f66e-4dff-a159-390ea7d112a2
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6f2128ab-f66e-4dff-a159-390ea7d112a2
+
+
+2023-06-27 21:19:43.790 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6105c882-a262-46be-9761-af2f448569d3
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6105c882-a262-46be-9761-af2f448569d3
+
+
+2023-06-27 21:19:43.790 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6105c882-a262-46be-9761-af2f448569d3
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: 6105c882-a262-46be-9761-af2f448569d3
+
+
+2023-06-27 21:24:32.299 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: be92e388-e8d5-49c1-8a43-90d9025f1410
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: be92e388-e8d5-49c1-8a43-90d9025f1410
+
+
+2023-06-27 21:24:32.299 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: be92e388-e8d5-49c1-8a43-90d9025f1410
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: be92e388-e8d5-49c1-8a43-90d9025f1410
+
+
+2023-06-27 21:29:43.546 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: e57ee71e-4762-4e0b-8db7-740f79d79a18
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: e57ee71e-4762-4e0b-8db7-740f79d79a18
+
+
+2023-06-27 21:29:43.546 | INFO     | __main__:regist_func:236 - exceptions : 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: e57ee71e-4762-4e0b-8db7-740f79d79a18
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 225, in regist_func
+    print(query_job.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:example_dataset.users_info: User does not have permission to query table saikio:example_dataset.users_info, or perhaps it does not exist in location asia-northeast2.
+
+Location: asia-northeast2
+Job ID: e57ee71e-4762-4e0b-8db7-740f79d79a18
+
+
+2023-06-27 21:49:17.453 | INFO     | __main__:regist_func:238 - exceptions : 'QueryJob' object is not subscriptable : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 227, in regist_func
+    print(query_job[0])
+TypeError: 'QueryJob' object is not subscriptable
+
+2023-06-27 21:49:17.453 | INFO     | __main__:regist_func:238 - exceptions : 'QueryJob' object is not subscriptable : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 227, in regist_func
+    print(query_job[0])
+TypeError: 'QueryJob' object is not subscriptable
+
+2023-06-27 21:55:30.655 | INFO     | __main__:regist_func:240 - exceptions : 'QueryJob' object is not subscriptable : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 227, in regist_func
+    print(query_job[0]['cnt'])
+TypeError: 'QueryJob' object is not subscriptable
+
+2023-06-27 21:55:30.655 | INFO     | __main__:regist_func:240 - exceptions : 'QueryJob' object is not subscriptable : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 227, in regist_func
+    print(query_job[0]['cnt'])
+TypeError: 'QueryJob' object is not subscriptable
+
+2023-06-27 22:06:26.327 | INFO     | __main__:regist_func:239 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: b8177724-40f7-43bb-9eb7-ae58e9765625
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 234, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: b8177724-40f7-43bb-9eb7-ae58e9765625
+
+
+2023-06-27 22:06:26.327 | INFO     | __main__:regist_func:239 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: b8177724-40f7-43bb-9eb7-ae58e9765625
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 234, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: b8177724-40f7-43bb-9eb7-ae58e9765625
+
+
+2023-06-27 22:11:23.562 | INFO     | __main__:regist_func:242 - exceptions : type object 'datetime.datetime' has no attribute 'datetime' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 216, in regist_func
+    registdate = datetime.datetime.strptime(registdate, '%Y-%m-%d').date()
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+
+2023-06-27 22:11:23.562 | INFO     | __main__:regist_func:242 - exceptions : type object 'datetime.datetime' has no attribute 'datetime' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 216, in regist_func
+    registdate = datetime.datetime.strptime(registdate, '%Y-%m-%d').date()
+AttributeError: type object 'datetime.datetime' has no attribute 'datetime'
+
+2023-06-27 22:13:16.447 | INFO     | __main__:regist_func:243 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 32126ed4-cc06-493e-8c4a-d43bc6b0dd59
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 238, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 32126ed4-cc06-493e-8c4a-d43bc6b0dd59
+
+
+2023-06-27 22:13:16.447 | INFO     | __main__:regist_func:243 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 32126ed4-cc06-493e-8c4a-d43bc6b0dd59
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 238, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 32126ed4-cc06-493e-8c4a-d43bc6b0dd59
+
+
+2023-06-27 22:15:32.067 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 78ab22d5-87ec-44a3-bc99-0f4efa30f293
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 78ab22d5-87ec-44a3-bc99-0f4efa30f293
+
+
+2023-06-27 22:15:32.067 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 78ab22d5-87ec-44a3-bc99-0f4efa30f293
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 78ab22d5-87ec-44a3-bc99-0f4efa30f293
+
+
+2023-06-27 22:21:45.975 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 1d8f30cc-5a27-4bd9-9d5b-911aa83c4606
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 1d8f30cc-5a27-4bd9-9d5b-911aa83c4606
+
+
+2023-06-27 22:21:45.975 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 1d8f30cc-5a27-4bd9-9d5b-911aa83c4606
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 1d8f30cc-5a27-4bd9-9d5b-911aa83c4606
+
+
+2023-06-27 22:26:49.235 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 4a0f2ec9-72c8-403f-80f0-078045b2eecd
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 4a0f2ec9-72c8-403f-80f0-078045b2eecd
+
+
+2023-06-27 22:26:49.235 | INFO     | __main__:regist_func:244 - exceptions : 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 4a0f2ec9-72c8-403f-80f0-078045b2eecd
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 239, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Syntax error: Unclosed identifier literal at [1:124]
+
+Location: US
+Job ID: 4a0f2ec9-72c8-403f-80f0-078045b2eecd
+
+
+2023-06-28 15:43:34.540 | ERROR    | utils.util:insert_data:86 - exceptions : 'str' object has no attribute 'date' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 69, in insert_data
+    registdate = now.strftime("%Y-%m-%d").date()
+AttributeError: 'str' object has no attribute 'date'
+
+2023-06-28 15:43:34.540 | ERROR    | utils.util:insert_data:86 - exceptions : 'str' object has no attribute 'date' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 69, in insert_data
+    registdate = now.strftime("%Y-%m-%d").date()
+AttributeError: 'str' object has no attribute 'date'
+
+2023-06-28 15:44:17.515 | ERROR    | utils.util:insert_data:86 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 0860e65c-01b7-4a80-bfc1-3ae6aaa90b78
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 81, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 0860e65c-01b7-4a80-bfc1-3ae6aaa90b78
+
+
+2023-06-28 15:44:17.515 | ERROR    | utils.util:insert_data:86 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 0860e65c-01b7-4a80-bfc1-3ae6aaa90b78
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 81, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 0860e65c-01b7-4a80-bfc1-3ae6aaa90b78
+
+
+2023-06-28 15:45:08.960 | ERROR    | utils.util:insert_data:88 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: b0243fee-298a-4076-87f8-7eb6015de888
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 83, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: b0243fee-298a-4076-87f8-7eb6015de888
+
+
+2023-06-28 15:45:08.960 | ERROR    | utils.util:insert_data:88 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: b0243fee-298a-4076-87f8-7eb6015de888
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 83, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: b0243fee-298a-4076-87f8-7eb6015de888
+
+
+2023-06-28 15:46:14.611 | ERROR    | utils.util:insert_data:92 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: fade5f00-5d95-40e6-be8a-d4a65df20867
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 87, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: fade5f00-5d95-40e6-be8a-d4a65df20867
+
+
+2023-06-28 15:46:14.611 | ERROR    | utils.util:insert_data:92 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: fade5f00-5d95-40e6-be8a-d4a65df20867
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 87, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: fade5f00-5d95-40e6-be8a-d4a65df20867
+
+
+2023-06-28 15:50:13.798 | ERROR    | utils.util:insert_data:90 - exceptions : strptime() argument 1 must be str, not datetime.datetime : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 71, in insert_data
+    registdate = datetime.strptime(now, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+
+2023-06-28 15:50:13.798 | ERROR    | utils.util:insert_data:90 - exceptions : strptime() argument 1 must be str, not datetime.datetime : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 71, in insert_data
+    registdate = datetime.strptime(now, '%Y-%m-%d').date()
+TypeError: strptime() argument 1 must be str, not datetime.datetime
+
+2023-06-28 15:51:39.464 | ERROR    | utils.util:insert_data:91 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: e0c93185-0d66-4d56-b9ac-0843bc33cc71
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 86, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: e0c93185-0d66-4d56-b9ac-0843bc33cc71
+
+
+2023-06-28 15:51:39.464 | ERROR    | utils.util:insert_data:91 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: e0c93185-0d66-4d56-b9ac-0843bc33cc71
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 86, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: e0c93185-0d66-4d56-b9ac-0843bc33cc71
+
+
+2023-06-28 15:54:06.249 | ERROR    | utils.util:insert_data:91 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 56c85fbf-1701-47b4-868e-b6487f94a1f2
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 86, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 56c85fbf-1701-47b4-868e-b6487f94a1f2
+
+
+2023-06-28 15:54:06.249 | ERROR    | utils.util:insert_data:91 - exceptions : 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 56c85fbf-1701-47b4-868e-b6487f94a1f2
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 86, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column registday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 56c85fbf-1701-47b4-868e-b6487f94a1f2
+
+
+2023-06-28 15:55:52.469 | ERROR    | utils.util:insert_data:91 - exceptions : name 'registdate' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 82, in insert_data
+    query = f'insert into `{project}.{dataset}.{table}` ( id , email, password, status, regisitday) values ({id},"{insert_data["email"]}","{insert_data["password"]}","NEW","{registdate}")'
+NameError: name 'registdate' is not defined
+
+2023-06-28 15:55:52.469 | ERROR    | utils.util:insert_data:91 - exceptions : name 'registdate' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 82, in insert_data
+    query = f'insert into `{project}.{dataset}.{table}` ( id , email, password, status, regisitday) values ({id},"{insert_data["email"]}","{insert_data["password"]}","NEW","{registdate}")'
+NameError: name 'registdate' is not defined
+
+2023-06-29 18:41:44.114 | ERROR    | utils.util:insert_data:91 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 80, in insert_data
+    id = int(row['cnt']) + 1
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-06-29 18:41:44.114 | ERROR    | utils.util:insert_data:91 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 80, in insert_data
+    id = int(row['cnt']) + 1
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-06-29 18:44:47.795 | ERROR    | utils.util:insert_data:94 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 80, in insert_data
+    if int(row['cnt']) is None:
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-06-29 18:44:47.795 | ERROR    | utils.util:insert_data:94 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 80, in insert_data
+    if int(row['cnt']) is None:
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-06-29 18:45:42.893 | ERROR    | utils.util:insert_data:94 - exceptions : 400 Column regisitday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 21b37466-d4db-42e5-8004-36726305c890
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 89, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column regisitday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 21b37466-d4db-42e5-8004-36726305c890
+
+
+2023-06-29 18:45:42.893 | ERROR    | utils.util:insert_data:94 - exceptions : 400 Column regisitday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 21b37466-d4db-42e5-8004-36726305c890
+ : Traceback (most recent call last):
+  File "/home/saikio/python_flask/utils/util.py", line 89, in insert_data
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column regisitday is not present in table saikio.example_dataset.login_info at [1:81]
+
+Location: asia-northeast2
+Job ID: 21b37466-d4db-42e5-8004-36726305c890
+
+
+2023-06-30 13:03:12.021 | INFO     | __main__:regist_func:235 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 224, in regist_func
+    id = int(row['cnt']) + 1
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-06-30 13:03:12.021 | INFO     | __main__:regist_func:235 - exceptions : int() argument must be a string, a bytes-like object or a number, not 'NoneType' : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 224, in regist_func
+    id = int(row['cnt']) + 1
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+
+2023-07-13 21:31:02.203 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-07-13 21:31:02.203 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-07-13 21:31:14.556 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-07-13 21:31:14.556 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-07-13 21:32:15.490 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-07-13 21:32:15.490 | ERROR    | __main__:contents:350 - exceptions : name 'onetimepass' is not defined : Traceback (most recent call last):
+  File "/home/saikio/python_flask/main.py", line 343, in contents
+    if onetimepass == request.form['onepass']:
+NameError: name 'onetimepass' is not defined
+
+2023-09-05 10:33:50.851 | INFO     | utils.util:add_member:235 - メンバーメールアドレスリスト：['norry-demo@dev.g-gen.co.jp', 'saikio-demo@dev.g-gen.co.jp', 'saikio@g-gen.co.jp']
+2023-09-05 10:33:50.851 | INFO     | utils.util:add_member:235 - メンバーメールアドレスリスト：['norry-demo@dev.g-gen.co.jp', 'saikio-demo@dev.g-gen.co.jp', 'saikio@g-gen.co.jp']
+2023-09-05 10:36:55.960 | INFO     | utils.util:add_member:235 - メンバーメールアドレスリスト：['norry-demo@dev.g-gen.co.jp', 'saikio-demo@dev.g-gen.co.jp', 'saikio@g-gen.co.jp']
+2023-09-05 10:36:55.960 | INFO     | utils.util:add_member:235 - メンバーメールアドレスリスト：['norry-demo@dev.g-gen.co.jp', 'saikio-demo@dev.g-gen.co.jp', 'saikio@g-gen.co.jp']

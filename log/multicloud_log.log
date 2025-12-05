@@ -1,0 +1,524 @@
+2023-09-09 11:39:58.721 | ERROR    | __main__:regist_func:171 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 145, in regist_func
+    system_name = request.form['system_name']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-09 11:39:58.721 | ERROR    | __main__:regist_func:171 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 145, in regist_func
+    system_name = request.form['system_name']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-09 11:43:26.804 | ERROR    | __main__:regist_func:171 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 6ecd2b15-4e1b-4c35-88b5-be9a6845b448
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 154, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 6ecd2b15-4e1b-4c35-88b5-be9a6845b448
+
+
+2023-09-09 11:43:26.804 | ERROR    | __main__:regist_func:171 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 6ecd2b15-4e1b-4c35-88b5-be9a6845b448
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 154, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 6ecd2b15-4e1b-4c35-88b5-be9a6845b448
+
+
+2023-09-11 08:37:27.215 | ERROR    | __main__:regist_func:171 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 956d8705-5f9f-4d6d-9749-cf8cf11d4d88
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 154, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 956d8705-5f9f-4d6d-9749-cf8cf11d4d88
+
+
+2023-09-11 08:37:27.215 | ERROR    | __main__:regist_func:171 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 956d8705-5f9f-4d6d-9749-cf8cf11d4d88
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 154, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 956d8705-5f9f-4d6d-9749-cf8cf11d4d88
+
+
+2023-09-11 08:39:15.339 | ERROR    | __main__:regist_func:174 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: b90e6e37-f670-4cf6-9120-b3a1b2d653ee
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 157, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: b90e6e37-f670-4cf6-9120-b3a1b2d653ee
+
+
+2023-09-11 08:39:15.339 | ERROR    | __main__:regist_func:174 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: b90e6e37-f670-4cf6-9120-b3a1b2d653ee
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 157, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: b90e6e37-f670-4cf6-9120-b3a1b2d653ee
+
+
+2023-09-11 08:40:48.321 | ERROR    | __main__:regist_func:174 - exceptions : 400 Required field project_name_gcp cannot be null
+
+Location: asia-northeast1
+Job ID: bac63cbe-6d56-4d10-8b09-2fb706deb545
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 169, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Required field project_name_gcp cannot be null
+
+Location: asia-northeast1
+Job ID: bac63cbe-6d56-4d10-8b09-2fb706deb545
+
+
+2023-09-11 08:40:48.321 | ERROR    | __main__:regist_func:174 - exceptions : 400 Required field project_name_gcp cannot be null
+
+Location: asia-northeast1
+Job ID: bac63cbe-6d56-4d10-8b09-2fb706deb545
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 169, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Required field project_name_gcp cannot be null
+
+Location: asia-northeast1
+Job ID: bac63cbe-6d56-4d10-8b09-2fb706deb545
+
+
+2023-09-11 08:44:44.182 | ERROR    | __main__:regist_func:177 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    project_name_gcp = request.form['project_name_gcp']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 08:44:44.182 | ERROR    | __main__:regist_func:177 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    project_name_gcp = request.form['project_name_gcp']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 08:45:22.978 | ERROR    | __main__:regist_func:177 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    project_name_gcp = request.form['project_name_gcp']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 08:45:22.978 | ERROR    | __main__:regist_func:177 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    project_name_gcp = request.form['project_name_gcp']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:05:15.341 | ERROR    | __main__:add:209 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 188, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:05:15.341 | ERROR    | __main__:add:209 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 188, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:06:10.829 | ERROR    | __main__:add:209 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 188, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:06:10.829 | ERROR    | __main__:add:209 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 188, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:06:40.897 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:06:40.897 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:08:22.102 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:08:22.102 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:09:59.213 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:09:59.213 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:10:02.878 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:10:02.878 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:11:05.577 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:11:05.577 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:11:12.628 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-11 16:11:12.628 | ERROR    | __main__:add:212 - exceptions : 400 Bad Request: The browser (or proxy) sent a request that this server could not understand. : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 191, in add
+    form['type'] = request.form['type']
+  File "/home/saikio/.local/lib/python3.9/site-packages/werkzeug/datastructures/structures.py", line 192, in __getitem__
+    raise exceptions.BadRequestKeyError(key)
+werkzeug.exceptions.BadRequestKeyError: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+
+2023-09-15 18:22:05.970 | ERROR    | __main__:regist_func:166 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 889affe1-b6f8-4209-890b-d442036a0545
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 889affe1-b6f8-4209-890b-d442036a0545
+
+
+2023-09-15 18:22:05.970 | ERROR    | __main__:regist_func:166 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 889affe1-b6f8-4209-890b-d442036a0545
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 889affe1-b6f8-4209-890b-d442036a0545
+
+
+2023-09-15 18:22:20.215 | ERROR    | __main__:regist_func:166 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 1cb15553-7553-4aa5-b4d1-6cb8f8371bd7
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 1cb15553-7553-4aa5-b4d1-6cb8f8371bd7
+
+
+2023-09-15 18:22:20.215 | ERROR    | __main__:regist_func:166 - exceptions : 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 1cb15553-7553-4aa5-b4d1-6cb8f8371bd7
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 147, in regist_func
+    for row in query_job:
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1783, in __iter__
+    return iter(self.result())
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.Forbidden: 403 Access Denied: Table saikio:user_regist.user_regist_list: User does not have permission to query table saikio:user_regist.user_regist_list, or perhaps it does not exist in location asia-northeast1.
+
+Location: asia-northeast1
+Job ID: 1cb15553-7553-4aa5-b4d1-6cb8f8371bd7
+
+
+2023-09-15 18:25:32.002 | ERROR    | __main__:regist_func:166 - exceptions : 400 Column type is not present in table mcg-ope-admin.user_regist.user_regist_list at [1:156]
+
+Location: asia-northeast1
+Job ID: 151458f9-9fad-4708-8f0b-84fe2e476def
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 159, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column type is not present in table mcg-ope-admin.user_regist.user_regist_list at [1:156]
+
+Location: asia-northeast1
+Job ID: 151458f9-9fad-4708-8f0b-84fe2e476def
+
+
+2023-09-15 18:25:32.002 | ERROR    | __main__:regist_func:166 - exceptions : 400 Column type is not present in table mcg-ope-admin.user_regist.user_regist_list at [1:156]
+
+Location: asia-northeast1
+Job ID: 151458f9-9fad-4708-8f0b-84fe2e476def
+ : Traceback (most recent call last):
+  File "/home/saikio/multicloud_user_regist/main.py", line 159, in regist_func
+    rows.result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1499, in result
+    do_get_result()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 349, in retry_wrapped_func
+    return retry_target(
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/retry.py", line 191, in retry_target
+    return target()
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/query.py", line 1489, in do_get_result
+    super(QueryJob, self).result(retry=retry, timeout=timeout)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/cloud/bigquery/job/base.py", line 728, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+  File "/home/saikio/.local/lib/python3.9/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Column type is not present in table mcg-ope-admin.user_regist.user_regist_list at [1:156]
+
+Location: asia-northeast1
+Job ID: 151458f9-9fad-4708-8f0b-84fe2e476def
+
+

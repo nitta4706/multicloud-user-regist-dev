@@ -1,0 +1,55 @@
+<!--
+(使用用途)
+管理者一覧画面(users_list.html)から『削除』ボタンを押した際に、
+削除対象のデータを表示する確認画面として使用
+以下の情報を表示
+①ID
+②会社名(利用者登録)
+③プロジェクト名(利用者登録)
+④システム名(利用者登録)
+⑤種別(利用者登録)
+⑥会社名
+⑦組織名
+⑧プロジェクト名
+⑨環境
+⑩利用用途
+⑪利用IP範囲
+⑫アクセス元IP制限
+ -->
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請</title>
+{% endblock %}
+{% block content %}
+<script type="text/javascript">
+    function buttonClick(){
+        alert('このレコードを削除しますか？');
+    }
+</script>
+<div class="container">
+    <div class="row"><h2>利用申請者(削除)</h2><a href="/userlist"><input type="button" style="margin-left: 50px;" class="btn btn-success" value="戻る"/></a></div>
+    {% for item in data %}
+    <form action="/userlist_delete/{{ item.id }}" method="post">
+        <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <tr><td style="background-color: #FFFFE0;">ID</td><td style="background-color: white;">{{ item.id }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">会社名(利用者登録)</td><td style="background-color: white;">{{ item.company_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">プロジェクト名(利用者登録)</td><td style="background-color: white;">{{ item.project_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">システム名(利用者登録)</td><td style="background-color: white;">{{ item.system_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">種別(利用者登録)</td><td style="background-color: white;">{{ item.type }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">会社名</td><td style="background-color: white;">{{ item.manage_company_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">組織名</td><td style="background-color: white;">{{ item.project_name_gcp }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">プロジェクト名</td><td style="background-color: white;">{{ item.organization_name }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">環境</td><td style="background-color: white;">{{ item.env }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">利用用途</td><td style="background-color: white;">{{ item.use_purpose }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">利用IP範囲</td><td style="background-color: white;">{{ item.subnet_info }}</td></tr>
+                <tr><td style="background-color: #FFFFE0;">アクセス元IP制限</td><td style="background-color: white;">{{ item.client_cidr }}</td></tr>
+            </table>
+        </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="delete" onclick="buttonClick()"/>
+    </form>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,676 @@
+<!--
+(使用用途)
+管理者一覧画面(users_list.html)から『編集』ボタンを押した際に、
+管理者が以下の情報を入力する際に使用
+以下の情報を表示
+
+①会社名
+②組織名
+③プロジェクト名
+④環境
+⑤利用用途
+⑥利用IP範囲
+⑦アクセス元IP制限
+⑧vpcアクセスコネクター生成
+⑨vpcアクセスコネクター用Cloud Run及びCloud Function
+
+また、環境が以下の場合には表示内容が変更される
+---管理者未登録---
+・通常⇛アクセス元IP制限は非表示
+・API及びSECURE⇛上記①〜⑨の項目はすべて表示
+
+---管理者登録済み---
+・通常⇛ブランチ生成ボタンは非表示で①〜⑥の項目は、入力不可(グレーアウト)
+・API及びSECURE⇛アクセス元IP制限のテキスト以外の①〜⑨の項目は、入力不可(グレーアウト)
+ -->
+
+ {% extends 'base.html' %}
+ {% block title %}
+ <title>利用者申請</title>
+ {% endblock %}
+ {% block content %}
+
+ <style>
+    .radio-group {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 450px;
+}
+
+.radio-group label {
+    flex: 1; /* 各アイテムが均等にスペースを取る */
+    text-align: center; /* テキストを中央揃え */
+}
+input[type="radio"] {
+    transform: scale(0.6); /* サイズを70%に縮小 */
+    margin-right: 5px; /* テキストとの間に余白を追加 */
+}
+ </style>
+ 
+ {% for item in data %}
+ <form id="users_edit_form" action="/userlist_edit/{{ item.id }}" method="POST" onsubmit="enableInput()">
+ 
+     <input class="form-control" type="hidden" name="id" value="{{ item.id }}"/>
+     <input class="form-control" type="hidden" name="desired_delivery_date" value="{{ item.desired_delivery_date }}"/>
+     <input class="form-control" type="hidden" name="insert_date" value="{{ item.insert_date }}"/>
+     <input class="form-control" type="hidden" name="name" value="{{ item.name }}"/>
+     <input class="form-control" type="hidden" name="tel" value="{{ item.tel }}"/>
+     <input class="form-control" type="hidden" name="email" value="{{ item.email }}"/>
+     <input class="form-control" type="hidden" name="company_name" value="{{ item.company_name }}"/>
+     <input class="form-control" type="hidden" name="belonging_department" value="{{ item.belonging_department }}"/>
+     <input class="form-control" type="hidden" name="project_name" value="{{ item.project_name }}"/>
+     <input class="form-control" type="hidden" name="UPDATE_FLG" value="{{ item.UPDATE_FLG }}"/>
+     <input class="form-control" type="hidden" name="system_name" value="{{ item.system_name }}"/>
+     <input class="form-control" type="hidden" name="type" value="{{ item.type }}"/>
+     <input class="form-control" type="hidden" name="memo" value="{{ item.memo }}"/>
+ 
+     {% if item.UPDATE_FLG=='operate_complete' %}
+         <input class="form-control" type="hidden" name="manage_company_name" value="{{ item.manage_company_name }}"/>
+         <input class="form-control" type="hidden" name="organization_name" value="{{ item.organization_name }}"/>
+         <input class="form-control" type="hidden" name="project_name_gcp" value="{{ item.project_name_gcp }}"/>
+         <input class="form-control" type="hidden" name="group_name" value="{{ item.group_name }}"/>
+         <input class="form-control" type="hidden" name="group_email" value="{{ item.group_email }}"/>
+         <input class="form-control" type="hidden" name="user_group_name" value="{{ item.user_group_name }}"/>
+         <input class="form-control" type="hidden" name="user_group_email" value="{{ item.user_group_email }}"/>
+         <input class="form-control" type="hidden" name="env" value="{{ item.env }}"/>
+         <input class="form-control" type="hidden" name="use_purpose" value="{{ item.use_purpose }}"/>
+         <input class="form-control" type="hidden" name="subnet_info" value="{{ item.subnet_info }}"/>
+         <input class="form-control" type="hidden" name="client_cidr" value="{{ item.client_cidr }}"/>
+     {% endif %}
+     {% if item.use_purpose=='secure' and item.UPDATE_FLG=='operate_complete' %}
+         <input class="form-control" id="vpc_access_conn_val" type="hidden" name="vpc_access_conn" value="{{ item.vpc_access_conn }}"/>
+         <input class="form-control" id="connector_cidr_val" type="hidden" name="connector_cidr" value="{{ item.connector_cidr }}"/>
+     {% endif %}
+ 
+     <div class="container">
+         <div class="row">
+         <h2>申請情報の登録(編集)</h2><a href="/userlist"><input type="button" style="margin-left: 50px;" class="btn btn-success" value="戻る"/></a>
+         </div>
+         <div class="row">
+         <h4>利用者登録情報</h4>
+         </div>
+         <div class="row">
+             <div class="col-md-6">
+                 <table class="table table-bordered">
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>利用者名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>電話番号</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.tel }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>メールアドレス</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.email }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>会社名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.company_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>所属部署</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.belonging_department }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>プロジェクト名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.project_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>システム名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.system_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:gold; border: 1px solid #000;"><strong>利用用途</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.type }}</td>
+                     </tr>
+ 
+                 </table>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>その他情報</strong>
+                     </div>
+                     <textarea readonly cols="5" class="form-control" style="height: 150px;background-color:#ffffff; border: 1px solid #000;">{{ item.memo }}</textarea>
+                 </div>
+                 <div class="row">
+                     <h4>更新前登録情報</h4>
+                 </div>
+                 <table class="table table-bordered">
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>会社名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.manage_company_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>組織名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.organization_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>プロジェクト名</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.project_name_gcp }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>Googleグループ名(管理者用)</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.group_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>Googleグループ<br>e-mail(管理者用)</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.group_email }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>Googleグループ名(利用者用)</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.user_group_name }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>Googleグループ e-mail<br>(利用者用)</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.user_group_email }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>利用用途</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.use_purpose }}</td>
+                     </tr>
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>環境</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.env }}</td>
+                     </tr>
+                     {% if item.use_purpose != 'wp'%}
+                        <tr>
+                            <td style="background-color:lightgreen; border: 1px solid #000;"><strong>利用IP範囲</strong></td>
+                            <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.subnet_info }}</td>
+                        </tr>
+                     {% endif %}
+                     <tr>
+                         <td style="background-color:lightgreen; border: 1px solid #000;"><strong>アクセス元IP制限</strong></td>
+                         <td style="background-color:#ffffff; border: 1px solid #000;">{{ item.client_cidr }}</td>
+                     </tr>
+ 
+                 </table>
+ 
+                 {% if error %}
+                     {% for e in error %}
+                     <p class="error_message" style="color:#ff0000;">{{e}}</p>
+                     {% endfor %}
+                 {% endif %}
+                 <div class="form-group">
+                     <strong style="margin-left:15px;color:blue;">(重要)会社名-組織名-プロジェクト名は、合計で24文字の制限があります</strong>
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>会社名</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)半角英数文字(英小文字):8文字以内</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+                     {% if item.UPDATE_FLG == 'update' %}
+                         <input class="form-control" type="text" name="manage_company_name" placeholder="例:mec001" value="{% if item.manage_company_name %}{{item.manage_company_name}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="manage_company_name" placeholder="例:mec001" value="{{ item.manage_company_name }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>組織名</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)半角英数文字(英小文字):8文字以内</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+                     {% if item.UPDATE_FLG == 'update' %}
+                         <input class="form-control" type="text" name="organization_name" placeholder="例:datateam" value="{% if item.organization_name %}{{item.organization_name}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="organization_name" placeholder="例:datateam" value="{{ item.organization_name }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>GCPで使用するプロジェクト名</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)半角英数文字(英小文字):8文字以内     <span style="color:blue;">{{ mess }}</span></span>
+                     </div>
+                     {% if item.UPDATE_FLG == 'update' %}
+                         <input class="form-control" type="text" name="project_name_gcp" placeholder="例:project002" value="{% if item.project_name_gcp %}{{item.project_name_gcp}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="project_name_gcp" placeholder="例:project002" value="{{item.project_name_gcp}}" disabled/>
+                     {% endif %}
+ 
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>Googleグループ名(管理者用)</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)半角英数文字(英小文字),-(半角ハイフン)     <span style="color:blue;">{{ mess }}</span></span>
+                     </div>
+                     {% if item.UPDATE_FLG=='update' %}
+                         <input class="form-control" type="text" name="group_name" placeholder="例:google-gcp-project-admin-group" value="{% if item.group_name %}{{item.group_name}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="group_name" placeholder="例:google-gcp-project-admin-group" value="{{ item.group_name }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>Googleグループ e-mail(管理者用)</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+                     {% if item.UPDATE_FLG == 'update' %}
+                         <input class="form-control" type="text" name="group_email" placeholder="例:google-gcp-project-admin-group@mec.co.jp" value="{% if item.group_email %}{{item.group_email}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="group_email" placeholder="例:google-gcp-project-admin-group@mec.co.jp" value="{{ item.group_email }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>Googleグループ名(利用者用)</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)半角英数文字(英小文字),-(半角ハイフン)     <span style="color:blue;">{{ mess }}</span></span>
+                     </div>
+                     {% if item.UPDATE_FLG=='update' %}
+                         <input class="form-control" type="text" name="user_group_name" placeholder="例:google-gcp-project-user-group" value="{% if item.user_group_name %}{{item.user_group_name}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="user_group_name" placeholder="例:google-gcp-project-user-group" value="{{ item.user_group_name }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>Googleグループ e-mail(利用者用)</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+                     {% if item.UPDATE_FLG=='update' %}
+                         <input class="form-control" type="text" name="user_group_email" placeholder="例:google-gcp-project-user-group@mec.co.jp" value="{% if item.user_group_email %}{{item.user_group_email}}{% endif %}"/>
+                     {% else %}
+                         <input class="form-control" type="text" name="user_group_email" placeholder="例:google-gcp-project-user-group@mec.co.jp" value="{{ item.user_group_email }}" disabled/>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>利用用途</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須:単体選択)</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+                     <div class="radio-group">
+                         {% if item.use_purpose == 'standard' %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" checked></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" disabled></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()" disabled></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" disabled></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" disabled></label>
+                         {% elif item.use_purpose == 'api' %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" onchange="changeTag()" disabled></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" onchange="changeTag()" checked></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()" disabled></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" onchange="changeTag()" disabled></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" disabled></label>
+                         {% elif item.use_purpose == 'secure' %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" onchange="changeTag()" disabled></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" onchange="changeTag()" disabled></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()" checked></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" onchange="changeTag()" disabled></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" disabled></label>
+                         {% elif item.use_purpose == 'wp' %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" onchange="changeTag()" disabled></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" onchange="changeTag()" disabled></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()" disabled></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" onchange="changeTag()" checked></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" disabled></label>
+                          {% elif item.use_purpose == 'static' %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" onchange="changeTag()" disabled></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" onchange="changeTag()" disabled></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()" disabled></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" onchange="changeTag()" disabled></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" checked></label>
+                         {% else %}
+                             <label>通常<input class="form-control" id="env_standard" type="radio" name="use_purpose" value="standard" onchange="changeTag()"></label>
+                             <label>API<input class="form-control" id="env_api" type="radio" name="use_purpose" value="api" onchange="changeTag()"></label>
+                             <label>セキュア<input class="form-control" id="env_secure" type="radio" name="use_purpose" value="secure" onchange="changeTag()"></label>
+                             <label>WordPress<input class="form-control" id="env_wp" type="radio" name="use_purpose" value="wp" onchange="changeTag()"></label>
+                             <label>静的サイト<input class="form-control" id="env_static" type="radio" name="use_purpose" value="static" onchange="changeTag()"></label>
+                         {% endif %}
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <div class="row">
+                         <strong>環境</strong>
+                         <span style="margin-left:15px;color:#ff0000;">(必須)   複数選択可</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                     </div>
+ 
+                     {% if item.env == 'prd' %}
+                         <label style="margin-right: 20px;"><input type="checkbox" name="env" value="prd" style="margin-right: 5px;" checked disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" disabled>STG</label>
+                     {% elif item.env == 'stg' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" checked disabled>STG</label>
+                     {% elif item.env == 'dev' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" checked disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" disabled>STG</label>
+                     {% elif item.env == 'prd,stg' or item.use_purpose == 'stg,prd' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" checked disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" checked disabled>STG</label>
+                     {% elif item.env == 'prd,dev' or item.use_purpose == 'dev,prd' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" checked disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" checked disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" disabled>STG</label>
+                     {% elif item.env == 'dev,stg' or item.use_purpose == 'stg,dev' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" checked disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" checked disabled>STG</label>
+                     {% elif item.env == 'prd,dev,stg' %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;" checked disabled>PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;" checked disabled>DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;" checked disabled>STG</label>
+                     {% else %}
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="prd" style="margin-right: 5px;">PRD</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="dev" style="margin-right: 5px;">DEV</label>
+                         <label style="margin-right: 20px;"><input type="checkbox"  name="env" value="stg" style="margin-right: 5px;">STG</label>
+                     {% endif %}
+                 </div>
+                 <div class="form-group">
+                    <div class="row">
+                        <strong>利用IP範囲</strong>
+                        <span style="margin-left:15px;color:#ff0000;">(必須)半角数字及び.(ドット)/(スラッシュ)</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                    </div>
+                    {% if item.UPDATE_FLG == 'update' %}
+                        <input id="remove_div_tag" class="form-control" type="text" name="subnet_info" placeholder="例:10.65.0.0/24" value="{% if item.subnet_info %}{{item.subnet_info}}{% endif %}"/>
+                    {% else %}
+                        <input id="remove_div_tag" class="form-control" type="text" name="subnet_info" placeholder="例:10.65.0.0/24" value="{{item.subnet_info}}" disabled/>
+                    {% endif %}
+
+                 </div>
+                 <div class="form-group" id="htmlContainer">
+                 </div>
+                 <div class="form-group" id="vpc-access-connector">
+                 </div>
+                 <script>
+                 window.onload = (event) => {
+                     document.getElementById("htmlContainer").innerHTML = "";
+                     document.getElementById("vpc-access-connector").innerHTML = "";
+ 
+                     // checkboxの状態を取得
+                     let radioDivs = document.querySelectorAll('.row input[type="radio"]');
+ 
+                     // 各<div>要素に対してループ
+                     radioDivs.forEach(function(radioDiv) {
+                       // ラジオボタンの値を取得
+                       let value = radioDiv.value;
+ 
+                       // ラジオボタンの状態を確認
+                       if (radioDiv.checked) {
+                            if (value=='secure') {
+
+                                let customHTML = `
+                                    <div class="row">
+                                        <strong>アクセス元IP制限</strong>
+                                        <span style="margin-left:15px;color:#ff0000;">(必須)半角数字及び.(ドット)/(スラッシュ),(カンマ)</span>
+                                    </div>
+                                    {% if item.UPDATE_FLG == 'update' %}
+                                        <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{% if item.client_cidr %}{{item.client_cidr}}{% endif %}">
+                                    {% elif item.UPDATE_FLG == 'finish' %}
+                                        <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{{item.client_cidr}}" disabled/>
+                                    {% else %}
+                                        <input class="form-control" type="text" id="exampleInput" name="client_cidr2" placeholder="例:133.32.153.32/32" oninput="handleInput(this)" value="{{item.client_cidr}}">
+                                    {% endif %}
+                                `;
+                                document.getElementById("htmlContainer").innerHTML += customHTML;
+                                let vpc_access_connectorHTML = `
+                                    <div class="row">
+                                        <strong>VPCコネクター利用手段</strong>
+                                        <span style="margin-left:15px;color:#ff0000;">(任意)</span>
+                                    </div>
+                                    <div class="row">
+                                        {% if item.vpc_access_conn == 'gcf' %}
+                                            <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="{% if item.vpc_access_conn %}{{item.vpc_access_conn}}{% endif %}" onchange="handleCheckboxChange()" style="width: 20px; height: 20px;" checked ><label>Cloud Functions又はCloud Runを使用する</label>
+                                        {% elif item.UPDATE_FLG == 'operate_complete' and item.vpc_access_conn != 'gcf' %}
+                                            <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="{% if item.vpc_access_conn %}{{item.vpc_access_conn}}{% endif %}" onchange="handleCheckboxChange()" style="width: 20px; height: 20px;" ><label>Cloud Functions又はCloud Runを使用する</label>
+                                        {% else %}
+                                            <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="gcf" onchange="handleCheckboxChange()" style="width: 20px; height: 20px;"><label>Cloud Functions又はCloud Runを使用する</label>
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group" id="connector_textbox">
+                                        <div class="row">
+                                            <strong>VPCコネクター利用IP範囲</strong>
+                                            <span style="margin-left:15px;color:#ff0000;">(任意)半角数字及び.(ドット)/28</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                                        </div>
+                                        {% if item.UPDATE_FLG == 'update' %}
+                                            <input class="form-control" type="text" name="connector_cidr" placeholder="例:10.7.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}">
+                                        {% elif item.UPDATE_FLG == 'operate_complete' and item.connector_cidr != None and item.connector_cidr != '' and 'connector_cidr2' not in item %}
+                                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.7.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                                        {% elif item.UPDATE_FLG == 'finish' %}
+                                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.7.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                                    {% else %}
+                                            <input class="form-control" type="text" name="connector_cidr2" placeholder="例:10.7.0.0/28" value="{{item.connector_cidr}}"/>
+                                        {% endif %}
+                                    </div>
+                                `;
+                                document.getElementById("vpc-access-connector").innerHTML += vpc_access_connectorHTML;
+
+                                let myCheckbox = document.getElementById('vpc_access_conn');
+
+                                // チェックされているかどうかを確認
+                                if (myCheckbox.checked) {
+                                    add_connector_textbox();
+                                }
+                             }
+
+                           if (value=='api') {
+                                 let customHTML = `
+                                     <div class="row">
+                                         <strong>アクセス元IP制限</strong>
+                                         <span style="margin-left:15px;">(任意)半角数字及び.(ドット)/(スラッシュ),(カンマ)</span>
+                                         <span style="margin-left:15px;">(補足)アクセス元IP制限を実施しない場合は0.0.0.0/0のままにしてください(空欄でも可)</span>
+                                     </div>
+                                     {% if item.UPDATE_FLG == 'update' %}
+                                         <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{% if item.client_cidr %}{{item.client_cidr}}{% endif %}">
+                                     {% elif item.UPDATE_FLG == 'finish' %}
+                                         <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{{item.client_cidr}}" disabled/>
+                                     {% else %}
+                                         <input class="form-control" type="text" name="client_cidr2" placeholder="例:133.32.153.32/32" oninput="handleInput(this)" value="{{item.client_cidr}}">
+                                     {% endif %}
+                                 `;
+                                 document.getElementById("htmlContainer").innerHTML += customHTML;
+                            }
+                            if (value=='static' || value=='wp') {
+                                 let customHTML = `
+                                     <div class="row">
+                                         <strong>ドメイン</strong>
+                                         <span style="margin-left:15px;color:#ff0000;">(必須)Route53より洗い出したドメインを入力</span>
+                                     </div>
+                                     {% if item.UPDATE_FLG == 'update' %}
+                                         <input class="form-control" type="text" name="domain_name" placeholder="例:static.gcp.mec-cloud.com" value="{% if item.domain_name %}{{item.domain_name}}{% endif %}">
+                                     {% elif item.UPDATE_FLG == 'finish' %}
+                                         <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{{item.domain_name}}" disabled/>
+                                     {% else %}
+                                         <input class="form-control" type="text" name="domain_name" placeholder="例:static.gcp.mec-cloud.com" value="{{item.domain_name}}">
+                                     {% endif %}
+                                 `;
+                                 document.getElementById("htmlContainer").innerHTML += customHTML;
+                            }
+                            else{
+                                document.getElementById("htmlContainer").innerHTML += "";
+                            }
+                       } else {
+                         console.log(value + " ラジオボタンは選択されていません");
+                       }
+                     });
+                 };
+                 function changeTag(){
+ 
+                     // タグの表示領域をクリア
+                     document.getElementById("htmlContainer").innerHTML = "";
+                     document.getElementById("vpc-access-connector").innerHTML = "";
+                     let element = document.getElementById("remove_div_tag");
+                     element.disabled=false;
+ 
+                     // checkboxの状態を取得
+                     let env_secure = document.getElementById("env_secure").checked;
+                     let env_api = document.getElementById("env_api").checked;
+                     let env_wp = document.getElementById("env_wp").checked;
+                     let env_static = document.getElementById("env_static").checked;
+ 
+                     if (env_secure) {
+                         let customHTML = `
+                             <div class="row">
+                                 <strong>アクセス元IP制限</strong>
+                                 <span style="margin-left:15px;color:#ff0000;">(必須)半角数字及び.(ドット)/(スラッシュ),(カンマ)</span>
+                             </div>
+                             {% if item.UPDATE_FLG == 'update' %}
+                                 <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{% if item.client_cidr %}{{item.client_cidr}}{% endif %}">
+                             {% else %}
+                                 <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{{item.client_cidr}}">
+                             {% endif %}
+ 
+                         `;
+                         document.getElementById("htmlContainer").innerHTML += customHTML;
+                         let vpc_access_connectorHTML = `
+                             <div class="row">
+                                 <strong>VPCコネクター利用手段</strong>
+                                 <span style="margin-left:15px;color:#ff0000;">(任意)</span>
+                             </div>
+                             <div class="row">
+                             {% if item.vpc_access_conn == 'gcf' and item.UPDATE_FLG == 'operate_complete'%}
+                                 <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="{{item.vpc_access_conn}}" style="width: 20px; height: 20px;" onchange="handleCheckboxChange()" checked><label>Cloud Functions又はCloud Runを使用する</label>
+                             {% elif item.UPDATE_FLG == 'finish' %}
+                                 <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="{{item.vpc_access_conn}}" style="width: 20px; height: 20px;" onchange="handleCheckboxChange()" checked><label>Cloud Functions又はCloud Runを使用する</label>
+                             {% else %}
+                                 <input class="form-control" id="vpc_access_conn" type="checkbox" name="vpc_access_conn" value="gcf" style="width: 20px; height: 20px;" onchange="handleCheckboxChange()"><label>Cloud Functions又はCloud Runを使用する</label>
+                             {% endif %}
+                             </div>
+                             <div class="row">
+                                 <strong>VPCコネクター利用IP範囲</strong>
+                                 <span style="margin-left:15px;color:#ff0000;">(任意)半角数字及び.(ドット)/28</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                             </div>
+                             {% if item.UPDATE_FLG == 'update' %}
+                                 <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}">
+                             {% elif item.vpc_access_conn == 'gcf' and item.connector_cidr != '' %}
+                                 <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                             {% elif item.UPDATE_FLG == 'finish' %}
+                                 <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                             {% else %}
+                                 <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{{item.connector_cidr}}"/>
+                             {% endif %}
+                         `;
+                         document.getElementById("vpc-access-connector").innerHTML += vpc_access_connectorHTML;
+                     }
+                     if (env_api) {
+                         let customHTML = `
+                             <div class="row">
+                                 <strong>アクセス元IP制限</strong>
+                                 <span style="margin-left:15px;">(任意)半角数字及び.(ドット)/(スラッシュ),(カンマ)</span>
+                                 <span style="margin-left:15px;">(補足)アクセス元IP制限を実施しない場合は0.0.0.0/0のままにしてください(空欄でも可)</span>
+                             </div>
+                             {% if item.UPDATE_FLG == 'update' %}
+                                 <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{% if item.client_cidr %}{{item.client_cidr}}{% endif %}">
+                             {% else %}
+                                 <input class="form-control" type="text" name="client_cidr" placeholder="例:133.32.153.32/32" value="{{item.client_cidr}}">
+                             {% endif %}
+                         `;
+                         document.getElementById("htmlContainer").innerHTML += customHTML;
+                     }
+                     if (env_static){
+                        let customHTML = `
+                             <div class="row">
+                                 <strong>ドメイン</strong>
+                                 <span style="margin-left:15px;color:#ff0000;">(必須)Route53より洗い出したドメインを入力</span>
+                             </div>
+                             {% if item.UPDATE_FLG == 'update' %}
+                                 <input class="form-control" type="text" name="domain_name" placeholder="例:static.gcp.mec-cloud.com" value="{% if item.domain_name %}{{item.domain_name}}{% endif %}">
+                             {% else %}
+                                 <input class="form-control" type="text" name="domain_name" placeholder="例:static.gcp.mec-cloud.com" value="{{item.domain_name}}">
+                             {% endif %}
+                         `;
+                         document.getElementById("htmlContainer").innerHTML += customHTML;
+
+                     }
+                     if(env_wp || env_static){
+                        let element = document.getElementById("remove_div_tag");
+                        if (element) {
+                            element.disabled = true;
+                        }
+                     }
+                     else{
+                         document.getElementById("htmlContainer").innerHTML += "";
+                     }
+ 
+                 };
+                 function handleInput(input) {
+                     // 元の値を取得
+                     var originalValue = input.defaultValue;
+                     // 入力された新しい値を取得
+                     var newValue = input.value;
+ 
+                     // 元の値と新しい値が異なる場合にのみ、新しい値を表示
+                     if (originalValue !== newValue) {
+                         console.log("新しい値:", newValue);
+                         document.getElementById("exampleInput").value = newValue;
+                     }
+                 }
+                 // チェックボックスの状態が変更されたときに呼び出される関数
+                 function handleCheckboxChange() {
+
+                    let element_connector_cidr = document.getElementById("connector_cidr");
+
+                    // チェックボックスの要素を取得
+                    let checkbox = document.getElementById("vpc_access_conn");
+
+                    // チェックボックスがオンの場合
+                    if (checkbox.checked) {
+                        let userConfirmed = confirm("VPCコネクターが作成されますが、本当に実施しますか?");
+                        if (userConfirmed){
+                            add_connector_textbox();
+                        }
+                    } else {
+                        let userConfirmed = confirm("VPCコネクターが削除されますが、本当に実施しますか?");
+                    };
+
+                 };
+                 function add_connector_textbox(){
+
+                    document.getElementById("connector_textbox").innerHTML = "";
+                    let connectorHTML = `
+                        <div class="row">
+                            <strong>VPCコネクター利用IP範囲</strong>
+                            <span style="margin-left:15px;color:#ff0000;">(任意)半角数字及び.(ドット)/28</span><span style="margin-left:10px;color:blue;">{{ mess }}</span>
+                        </div>
+                        {% if item.UPDATE_FLG == 'update' %}
+                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}">
+                        {% elif item.connector_cidr != '' and item.connector_cidr != None %}
+                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                        {% elif item.UPDATE_FLG == 'finish' %}
+                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{% if item.connector_cidr %}{{item.connector_cidr}}{% endif %}" disabled/>
+                        {% else %}
+                            <input class="form-control" id="connector_cidr" type="text" name="connector_cidr" placeholder="例:10.0.0.0/28" value="{{item.connector_cidr}}"/>
+                        {% endif %}
+                    `;
+                    document.getElementById("connector_textbox").innerHTML += connectorHTML;
+
+                 };
+                 function enableInput(){
+
+                    let userConfirmed = confirm("本当にこの操作を実行しますか？");
+
+                    if (userConfirmed) {
+                        // IDが "connector_cidr" の要素を取得
+                        let connector_cidr_textbox = document.getElementById('connector_cidr');
+                        let connector_cidr_val = document.getElementById('connector_cidr_val');
+                        // IDが "vpc_access_conn" の要素を取得
+                        let vpc_access_conn_checkbox = document.getElementById('vpc_access_conn');
+                        let vpc_access_conn_val = document.getElementById('vpc_access_conn_val');
+
+                        connector_cidr_val.value=connector_cidr_textbox.value;
+
+                        if (vpc_access_conn_checkbox.checked) {
+                            vpc_access_conn_val.value = 'gcf';
+                        }else{
+                            vpc_access_conn_val.value = '';
+                        };
+                        if (connector_cidr_textbox.disabled) {
+                            document.getElementById('users_edit_form').elements['connector_cidr'].disabled = false;
+                        };
+                    }
+                 };
+                 </script>
+                 {% if item.UPDATE_FLG == 'finish' %}
+                 {% elif item.UPDATE_FLG == 'operate_complete' and item.use_purpose == 'standard' %}
+                 {% else %}
+                     <div class="form-group">
+                         <input id="submit" type="submit" class="btn btn-primary" value="ブランチ生成"/>
+                     </div>
+                 {% endif %}
+             </div>
+         </div>
+     </div>
+ </form>
+ {% endfor %}
+ {% endblock %}

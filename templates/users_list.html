@@ -1,0 +1,119 @@
+<!--
+(使用用途)
+管理者一覧画面(users_list.html)で使用
+マルチクラウド基盤のTOP画面⇛『管理者専用』ボタンを押すことで表示
+BQに存在する利用者が登録した以下の情報とブランチ生成のための『編集』・ブランチ削除『削除』・ステータスの情報を表示
+
+①ID
+②氏名(Name)
+③登録日
+④TEL
+⑤Email
+⑥所属部署
+⑦PJ名
+⑧種別
+⑨編集ボタン
+⑩削除ボタン
+⑪STATUS
+
+-->
+{% extends 'base.html' %}
+{% block title %}
+<title>利用者申請</title>
+{% endblock %}
+{% block content %}
+<style>
+    .table-container {
+        max-height: 700px; /* テーブルが表示できる最大の高さ */
+        overflow-y: auto; /* 上下にスクロールバーを表示 */
+    }
+
+    thead {
+        position: sticky;
+        top: 0;
+    }
+
+    .pagination-container {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+
+</style>
+<div class="container" style="width: 85%;margin: 0 auto;max-width: none;">
+    <div class="row"><h2>利用申請者一覧</h2></div>
+    <div class="row">
+        <form action="/userlist_search" method="post">
+            <input type="text" name="text_data" placeholder="nameで含まれる文字を入力" style="margin-left: 50px;margin-bottom:5px;width: 250px;" value="{% if text_word %}{{ text_word }}{% endif %}"/>
+            <label for="date"  style="margin-left: 50px;margin-bottom:5px;">登録日:</label>
+            <select id="date" name="date" style="margin-bottom:5px;height: 35px;width: 200px;">
+                <option value="">日時を選択</option>
+                {% for date in date_options %}
+                    <option value="{{ date }}">{{ date }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" style="margin-left: 50px;margin-bottom:5px;" class="btn btn-primary" value="search">
+        </form>
+        <a href="/"><input type="button" style="margin-left: 50px;margin-bottom:5px;" class="btn btn-success" value="TOP画面"></a>
+    </div>
+    {{ pagination.info }}
+    <div class="table-container">
+        <table class="table table-striped" style="background-color: white;">
+            <thead style="background-color: #FFF9B1;">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>登録日</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>所属部署</th>
+                    <th>プロジェクト名</th>
+                    <th>種別</th>
+<!--                    <th>project_id_gcp</th>-->
+                    <th>ブランチ生成</th>
+                    <th>ブランチ削除</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in rows %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.desired_delivery_date }}</td>
+                    <td>{{ item.tel }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.belonging_department }}</td>
+                    <td>{{ item.project_name }}</td>
+                    <td>{{ item.type }}</td>
+<!--                    <td>{{ item.project_id_gcp }}</td>-->
+
+                    <td><a href="/userlist_edit/{{item.id}}"><input type="button" style="margin-left: 50px;" class="btn btn-info" value="編集"/></a></td>
+                    {% if item.UPDATE_FLG != 'update' and item.UPDATE_FLG != 'finish' %}
+                        <td><a href="/userlist_delete/{{item.id}}"><input type="button" style="margin-left: 50px;" class="btn btn-danger" value="削除"/></a></td>
+                    {% else %}
+<!--                        <td><a aria-disabled="true"><input type="button" style="margin-left: 50px;" class="btn btn-danger" value="削除" disabled="true" /></a></td>-->
+                        <td></td>
+                    {% endif %}
+                    {% if item.UPDATE_FLG == 'update' %}
+                        <td><span class="small-text" style="color:red;">申請受付</span></td>
+                    {% elif item.UPDATE_FLG == 'operate' %}
+                        <td><span class="small-text" style="color:blue;">処理実施済み</span></td>
+                    {% elif item.UPDATE_FLG == 'operate_complete' %}
+                        <td><span class="small-text" style="color:green;">運用中</span></td>
+                    {% elif item.UPDATE_FLG == 'finish' %}
+                        <td><span class="small-text" style="color:black;">close</span></td>
+                    {% else %}
+                        <td><span class="small-text" style="color:black;">none</span></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        {{ pagination.links }}
+    </div>
+</div>
+{% endblock %}
