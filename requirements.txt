@@ -17,4 +17,4 @@ Jinja2==3.1.2
 google-cloud-logging==3.5.0
 Werkzeug==2.3.4
 pendulum==3.1.0
-google-cloud-resource-manager>=1.0.0
+google-cloud-resource-managerr==1.14.2
