@@ -16,5 +16,5 @@ google-auth-oauthlib==0.8.0
 Jinja2==3.1.2
 google-cloud-logging==3.5.0
 Werkzeug==2.3.4
-pendulum
+pendulum==3.1.0
 google-cloud-resource-manager>=1.0.0
