@@ -1,4 +1,4 @@
-import os,traceback
+import os, traceback, json
 import sys
 import flask
 from flask_paginate import Pagination, get_page_parameter
@@ -6,20 +6,19 @@ import flask_login
 from utils.util import Utils
 from flask import Flask, request, redirect, render_template, flash, session
 from google.cloud import bigquery
+from google.cloud import secretmanager
 from google.oauth2 import service_account
 import pendulum
 import logging
 import google.cloud.logging
 from datetime import timedelta
 from werkzeug.datastructures import ImmutableMultiDict
-# import datetime
 
 from utils.util import Utils
 
 LOG_LEVEL = 20
 
-credentials_file = "mcg-ope-admin-dev-8d173a71f5a1.json"
-credentials = service_account.Credentials.from_service_account_file(credentials_file)
+project = "mcg-ope-admin-dev"
 
 logging.basicConfig(
         format = "[%(asctime)s][%(levelname)s] %(message)s",
@@ -27,11 +26,22 @@ logging.basicConfig(
     )
 logger = logging.getLogger()
 
-# Cloud Logging ハンドラを logger に接続
-logging_client = google.cloud.logging.Client(credentials=credentials)
-logging_client.setup_logging()
-
-logger.setLevel(LOG_LEVEL)
+try:
+    # Secret Managerからサービスアカウントキーを取得
+    # SecretManagerServiceClient自体は、実行環境の認証情報(ADC)を使用します。
+    secret_client = secretmanager.SecretManagerServiceClient()
+    secret_id = "mcg-ope-admin-dev-sa-key"  # Secret Managerに登録したシークレット名
+    version_id = "latest"
+    name = f"projects/{project}/secrets/{secret_id}/versions/{version_id}"
+    response = secret_client.access_secret_version(request={"name": name})
+    secret_payload = response.payload.data.decode("UTF-8")
+    credentials_info = json.loads(secret_payload)
+    credentials = service_account.Credentials.from_service_account_info(credentials_info)
+except Exception as e:
+    # 認証情報の取得に失敗した場合は、プログラムを続行できないため終了させます。
+    # loggerはまだ設定されていない可能性があるため、標準エラー出力に書き出します。
+    logger.critical(f"Secret Managerからの認証情報取得に失敗しました。アプリケーションを終了します。: {e}")
+    sys.exit(1)
 
 app = flask.Flask(__name__)
 
@@ -43,13 +53,18 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
 # サービスアカウント情報の取得(環境変数に設定)
-# credentials_file = os.environ.get('MITSU_CREDENTIALS')
+# Google Cloud Logging ハンドラを logger に接続
+# Cloud Logging ハンドラを logger に接続
+logging_client = google.cloud.logging.Client(credentials=credentials)
+logging_client.setup_logging()
+
+logger.setLevel(LOG_LEVEL)
+
 bigquery_client = bigquery.Client(credentials=credentials)
 
 form = dict()
 app.secret_key = 'abcdefghijklmn'
 
-project = "mcg-ope-admin-dev"
 ## Set Dataset
 dataset = "user_regist_dev"
 

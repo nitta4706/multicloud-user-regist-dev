@@ -1,0 +1,95 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+
+env:
+  # 共通の定数はトップレベルで定義
+  REGION: asia-northeast1
+  REPOSITORY: cloud-run-source-deploy
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  # 1. 環境変数の振り分けを行うジョブ (Configuration Job)
+  # ロジックと実行を分離し、可読性を高める
+  config:
+    runs-on: ubuntu-latest
+    outputs:
+      service: ${{ steps.env-vars.outputs.service }}
+      project_id: ${{ steps.env-vars.outputs.project_id }}
+      wif_provider: ${{ steps.env-vars.outputs.wif_provider }}
+      wif_sa: ${{ steps.env-vars.outputs.wif_sa }}
+      # ランタイム用SAとデプロイ用SAを分けるのがベストプラクティス
+      run_sa: ${{ steps.env-vars.outputs.run_sa }}
+    steps:
+      - id: env-vars
+        run: |
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "service=multiclouduserregist" >> $GITHUB_OUTPUT
+            echo "project_id=${{ secrets.GCLOUD_PROJECT_ID }}" >> $GITHUB_OUTPUT
+            echo "wif_provider=${{ secrets.WIF_PROVIDER }}" >> $GITHUB_OUTPUT
+            echo "wif_sa=${{ secrets.WIF_SERVICE_ACCOUNT }}" >> $GITHUB_OUTPUT
+            echo "run_sa=${{ secrets.RUNTIME_SERVICE_ACCOUNT }}" >> $GITHUB_OUTPUT
+          else
+            echo "service=multiclouduserregistdev" >> $GITHUB_OUTPUT
+            echo "project_id=${{ secrets.GCLOUD_PROJECT_ID_DEV }}" >> $GITHUB_OUTPUT
+            echo "wif_provider=${{ secrets.WIF_PROVIDER_DEV }}" >> $GITHUB_OUTPUT
+            echo "wif_sa=${{ secrets.WIF_SERVICE_ACCOUNT_DEV }}" >> $GITHUB_OUTPUT
+            echo "run_sa=${{ secrets.RUNTIME_SERVICE_ACCOUNT_DEV }}" >> $GITHUB_OUTPUT
+          fi
+
+  # 2. ビルド & デプロイジョブ
+  deploy:
+    needs: config
+    runs-on: ubuntu-latest
+    # 環境設定を引き継ぐ
+    environment: ${{ github.ref_name == 'main' && 'production' || 'development' }} 
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      # Google Cloud 認証
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ needs.config.outputs.wif_provider }}
+          service_account: ${{ needs.config.outputs.wif_sa }}
+
+      # Docker Buildx のセットアップ (キャッシュ機能を使うため必須)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Docker 認証
+      - name: Docker Auth
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+
+      # ビルド & プッシュ
+      # 1. commit sha をタグに含めてトレーサビリティを確保
+      # 2. GHAキャッシュを使用して2回目以降のビルド時間を数秒〜数分短縮
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ env.REGION }}-docker.pkg.dev/${{ needs.config.outputs.project_id }}/${{ env.REPOSITORY }}/${{ needs.config.outputs.service }}:${{ github.sha }}
+            ${{ env.REGION }}-docker.pkg.dev/${{ needs.config.outputs.project_id }}/${{ env.REPOSITORY }}/${{ needs.config.outputs.service }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Cloud Run デプロイ
+      - name: Deploy to Cloud Run
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ needs.config.outputs.service }}
+          region: ${{ env.REGION }}
+          # SHAタグを指定して、今ビルドしたものを確実にデプロイする (latest依存の排除)
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ needs.config.outputs.project_id }}/${{ env.REPOSITORY }}/${{ needs.config.outputs.service }}:${{ github.sha }}
+          # アプリケーションが稼働する権限 (Runtime SA) を明示的に指定
+          service-account: ${{ needs.config.outputs.run_sa }}
+          flags: '--platform managed'
